@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 const Form = () => {
   const [companyName, setCompanyName] = useState("Google");
   const [jobRole, setJobRole] = useState("Software Engineer");
-  const [letterContent, setLetterContent] = useState(`    <p>{date}</p>
-    <p>{companyName}</p>
+  const [letterContent, setLetterContent] = useState(`    
     <p>RE: {jobRole}</p>
     <p>Dear Hiring Manager,</p>
     <p>
@@ -32,8 +31,8 @@ const Form = () => {
       vision transformed into reality.
     </p>
     <p>
-      I have also designed my own portfolio website from scratch using Node.js, React.js, Bootstrap etc. (<a href="https://rahulschandak.netlify.app">
-      https://rahulschandak.netlify.app </a>). I would appreciate speaking with you further about my qualifications and how I can contribute to your 
+      I have also designed my own portfolio website from scratch using Node.js, React.js, Bootstrap etc. (<a href="https://rahulschandak.netlify.app"
+      >https://rahulschandak.netlify.app</a>). I would appreciate speaking with you further about my qualifications and how I can contribute to your 
       company. Please find my resume attached for your review. Thank you for being so considerate.
     </p>
     <p>

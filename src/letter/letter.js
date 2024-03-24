@@ -52,6 +52,10 @@ const Letter = () => {
           <a href="mailto:rahulschandak2@gmail.com">rahulschandak2@gmail.com</a>
         </p>
         <hr />
+        <div className="date-company-container">
+          <p>{companyName}</p>
+          <p>{date}</p>
+        </div>
         <div
           dangerouslySetInnerHTML={{
             __html: letterContent

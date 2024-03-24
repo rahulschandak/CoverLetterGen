@@ -35,7 +35,6 @@
   display: flex;
   justify-content: center;
 
-
   button {
     margin-right: 2rem;
     margin-left: 2rem;
@@ -59,4 +58,11 @@
   .subheading{
     margin-top: -0.25rem;
   }
+
+  .date-company-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -1rem;
+  }
 }
+
