@@ -24,7 +24,7 @@ const Letter = () => {
     letterContent,
   } = location.state || {};
 
-//   email = "mailto:".concat(email);
+  //   email = "mailto:".concat(email);
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -36,7 +36,20 @@ const Letter = () => {
   const navigate = useNavigate();
   const handleBack = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/", {
+      state: {
+        name,
+        subHeading,
+        email,
+        phone,
+        website,
+        date,
+        companyName,
+        jobRole,
+        designation,
+        letterContent,
+      },
+    });
   };
 
   return (

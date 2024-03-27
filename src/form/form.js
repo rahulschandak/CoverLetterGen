@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useLocation } from "react-router";
 
 const Form = () => {
-  const [name, setName] = useState("Rahul Satish Chandak");
-  const [subHeading, setSubHeading] = useState(
-    "Currently a Computer Science graduate student at Northeastern University, Boston, USA."
-  );
-  const [email, setEmail] = useState("chandak.r@northeastern.edu");
-  const [website, setWebsite] = useState("https://rahulschandak.netlify.app");
-  const [phone, setPhone] = useState("+1 857 313 1986");
-  const [companyName, setCompanyName] = useState("Google");
-  const [jobRole, setJobRole] = useState("Software Engineer");
-  const [designation, setDesignation] = useState("MS in Computer Science student at Northeastern University");
-  const [letterContent, setLetterContent] = useState(`    <p>RE: {jobRole}</p>
+  const location = useLocation();
+  const defaultInitialState = {
+    name: "Rahul Satish Chandak",
+    subHeading:
+      "Currently a Computer Science graduate student at Northeastern University, Boston, USA.",
+    email: "chandak.r@northeastern.edu",
+    phone: "+1 857 313 1986",
+    website: "https://rahulschandak.netlify.app",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+    }),
+    companyName: "Google",
+    jobRole: "Software Engineer",
+    designation: "MS in Computer Science student at Northeastern University",
+    letterContent: `    <p>RE: {jobRole}</p>
     <p>Dear Hiring Manager,</p>
     <p>
       I am writing to express my interest in the {jobRole} position at ‘{companyName}’. 
@@ -54,14 +61,23 @@ const Form = () => {
       Sincerely, <br />
       {name} <br />
       ({designation})
-    </p>`);
-  const [date, setDate] = useState(
-    new Date().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "2-digit",
-    })
+    </p>`,
+  };
+
+  const initialState = location.state || defaultInitialState;
+
+  const [name, setName] = useState(initialState.name);
+  const [subHeading, setSubHeading] = useState(initialState.subHeading);
+  const [email, setEmail] = useState(initialState.email);
+  const [website, setWebsite] = useState(initialState.website);
+  const [phone, setPhone] = useState(initialState.phone);
+  const [companyName, setCompanyName] = useState(initialState.companyName);
+  const [jobRole, setJobRole] = useState(initialState.jobRole);
+  const [designation, setDesignation] = useState(initialState.designation);
+  const [letterContent, setLetterContent] = useState(
+    initialState.letterContent
   );
+  const [date, setDate] = useState(initialState.date);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -136,7 +152,7 @@ const Form = () => {
           />
         </div>
         <div>
-          <label>COMPANY NAME</label>
+          <label>COMPANY NAME (Applying for)</label>
           <input
             type="text"
             value={companyName}
@@ -144,7 +160,7 @@ const Form = () => {
           />
         </div>
         <div>
-          <label>JOB ROLE</label>
+          <label>JOB ROLE (Applying for)</label>
           <input
             type="text"
             value={jobRole}
