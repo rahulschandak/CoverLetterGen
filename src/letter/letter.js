@@ -11,7 +11,20 @@ import { useNavigate } from "react-router-dom";
 
 const Letter = () => {
   const location = useLocation();
-  let { letterContent, companyName, jobRole, date } = location.state || {};
+  let {
+    name,
+    subHeading,
+    email,
+    phone,
+    website,
+    date,
+    companyName,
+    jobRole,
+    designation,
+    letterContent,
+  } = location.state || {};
+
+//   email = "mailto:".concat(email);
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -29,15 +42,12 @@ const Letter = () => {
   return (
     <>
       <div ref={componentRef} className="letter-container">
-        <h1>RAHUL SATISH CHANDAK</h1>
-        <p className="subheading">
-          Currently a Computer Science graduate student at Northeastern
-          University, Boston, USA.
-        </p>
+        <h1 className="heading">{name}</h1>
+        <p className="subheading">{subHeading}</p>
         <hr />
         <p>
           <FontAwesomeIcon icon={faPhoneVolume} style={{ color: "#000000" }} />
-          &nbsp; +1 857 313 1986
+          &nbsp; {phone}
         </p>
         <p>
           <FontAwesomeIcon
@@ -45,11 +55,7 @@ const Letter = () => {
             style={{ color: "#000000" }}
           />
           &nbsp;&nbsp;&nbsp;
-          <a href="mailto:chandak.r@northeastern.edu">
-            chandak.r@northeastern.edu
-          </a>{" "}
-          /{" "}
-          <a href="mailto:rahulschandak2@gmail.com">rahulschandak2@gmail.com</a>
+          <a href={"mailto:".concat(email)}>{email}</a>
         </p>
         <hr />
         <div className="date-company-container">
@@ -61,7 +67,10 @@ const Letter = () => {
             __html: letterContent
               .replaceAll("{jobRole}", jobRole)
               .replaceAll("{companyName}", companyName)
-              .replaceAll("{date}", date),
+              .replaceAll("{date}", date)
+              .replaceAll("{name}", name)
+              .replaceAll("{website}", website)
+              .replaceAll("{designation}", designation),
           }}
         />
       </div>

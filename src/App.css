@@ -1,9 +1,22 @@
 .form-container {
-  margin: 2rem 16rem 2rem 16rem;
+  margin: 2rem 2rem 2rem 2rem;
   padding: 1rem;
   background-color: lightgray;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   border-radius: 2rem;
+
+  .font-elements-style {
+    @media (max-width: 768px) {
+      display: relative;
+    }
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-auto-rows: minmax(100px, auto); /* adjust row height as needed */
+      gap: 10px; /* gap between grid items */
+    }
+  }
 
   label,
   input,
@@ -21,7 +34,7 @@
 
   div {
     border-radius: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .heading {
@@ -45,17 +58,21 @@
     font-size: 1.5rem;
     border-radius: 1rem;
     border: none;
-    font-family: 'Times New Roman', Times, serif
+    font-family: "Times New Roman", Times, serif;
   }
 }
 
 .letter-container {
   margin: 3rem;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 1rem;
   text-align: justify;
 
-  .subheading{
+  .heading {
+    text-transform: uppercase;
+  }
+
+  .subheading {
     margin-top: -0.25rem;
   }
 
@@ -65,4 +82,3 @@
     margin-bottom: -1rem;
   }
 }
-
